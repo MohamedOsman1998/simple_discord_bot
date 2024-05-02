@@ -8,7 +8,6 @@ class RoleHelper(commands.Cog):
         self.bot = bot
         bot.remove_command("help")
 
-        bot.remove_command("contact")
         bot.remove_command("embedset")
         bot.remove_command("info")
         bot.remove_command("licenseinfo")
@@ -19,9 +18,26 @@ class RoleHelper(commands.Cog):
 
     @commands.command()
     async def help(self, ctx):
-        roles = ["meetup","daily-paper-discussion"]
-        message = "send .role <role> to get a role:\npossible roles:"
-        for role in roles:
-            message += f"\n{role}"
+        roles = [
+            "meetup",
+            "daily-paper-discussion",
+            "reinforcement-learning",
+            "natural-language-processing",
+            "computer-vision",
+            "world-modelz",
+            "arc-challenge",
+            "arc-challenge-blackbox",
+            "arc-challenge-explainable",
+            "homebrew-nlp"
+        ]
+        message = "send `.role <role-name>` to get a role:\npossible roles:"
+        for i,role in enumerate(roles):
+            if i % 3 == 0:
+                message += "\n"
+                message += "> "
+            if i == len(roles) - 1:
+                message += f"`{role}`"
+            else:
+                message += f"`{role}`, "
         await ctx.send(message)
 

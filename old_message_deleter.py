@@ -18,7 +18,7 @@ PRUNED_CHANNELS = [(1234263126632042567, 30)]
 
 list_of_coroutines = []
 
-DEBUG_MODE = True
+DEBUG_MODE = False
 
 if not DEBUG_MODE:
     run_every = 3600  # i.e. run every hour in production
