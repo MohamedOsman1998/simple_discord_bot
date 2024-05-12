@@ -1,4 +1,5 @@
 import discord
+import random
 import os
 import dotenv
 import logging
@@ -7,14 +8,20 @@ import datetime
 import asyncio
 
 
+
 PRUNED_CHANNELS = [
-    (736963923521175612, 30),  # shitposting - 30 days
+    (1079073513492725850, 30),  # shitposting - 30 days
     (986699377257119794, 180),  # general - 6 months
     (986699973800390677, 180),  # random - 6 months
     (986700814938697728, 180),  # text-for-voice - 3 months
 ]
 
-PRUNED_CHANNELS = [(1234263126632042567, 30)]
+PRUNED_CHANNELS = [
+    (1079073513492725850, 30),  # shitposting - 30 days
+    (986700814938697728, 180),  # text-for-voice - 3 months
+]
+
+# PRUNED_CHANNELS = [(1234263126632042567, 30)] # test server's channel
 
 list_of_coroutines = []
 
@@ -49,7 +56,10 @@ async def prune(client, channel_id: int, delay_days: int):
         limit=None, before=datetime.datetime.now() - time_delta
     ):
         try:
+            print(msg.content)
             fire(msg.delete())
+            # wait a bit before deleting the next message
+            await asyncio.sleep(random.uniform(1.5, 2.5))
         except discord.errors.NotFound:
             logger.error(f"message not found: {msg.id}")
             break
