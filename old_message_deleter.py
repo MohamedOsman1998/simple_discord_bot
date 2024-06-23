@@ -16,7 +16,7 @@ PRUNED_CHANNELS = [
     (986700814938697728, 180),  # text-for-voice - 3 months
 ]
 
-PRUNED_CHANNELS = [
+PRUNED_CHANNELS = [ # temporary for probationary period
     (1079073513492725850, 30),  # shitposting - 30 days
     (986700814938697728, 180),  # text-for-voice - 3 months
 ]
